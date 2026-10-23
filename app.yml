@@ -1,0 +1,153 @@
+config:
+  hyperparams:
+  - default: ward
+    description: "Linkage strategy for hierarchical merges. Note: 'ward' requires
+      metric='euclidean'."
+    maxValue: null
+    minValue: null
+    name: linkage
+    options:
+    - ward
+    - complete
+    - average
+    - single
+    pattern: null
+    type: CATEGORICAL
+  - default: '1'
+    description: Store distances between merged clusters (needed for plotting an
+      accurate dendrogram in some settings).
+    maxValue: null
+    minValue: null
+    name: compute_distances
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - default: '1'
+    description: Standardize features to zero mean / unit variance before 
+      clustering (recommended).
+    maxValue: null
+    minValue: null
+    name: standardize
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - default: euclidean
+    description: Distance metric for clustering (ignored when linkage='ward', 
+      which always uses euclidean).
+    maxValue: null
+    minValue: null
+    name: metric
+    options:
+    - euclidean
+    - manhattan
+    - cosine
+    pattern: null
+    type: CATEGORICAL
+  - default: '1'
+    description: If true, build the full tree with distance_threshold=0 and 
+      n_clusters=None to enable a dendrogram.
+    maxValue: null
+    minValue: null
+    name: use_distance_threshold
+    options: []
+    pattern: null
+    type: BOOLEAN
+  - default: '2'
+    description: Number of clusters to cut the tree into (used only if 
+      use_distance_threshold=false).
+    maxValue: 200.0
+    minValue: 2.0
+    name: n_clusters
+    options: []
+    pattern: null
+    type: INTEGER
+  - default: Agglomerative Clustering Dendrogram
+    description: Title text for the dendrogram.
+    maxValue: null
+    minValue: null
+    name: plot_title
+    options: []
+    pattern: ^.{0,120}$
+    type: STRING
+  - default: none
+    description: Truncation mode for the dendrogram plot. 'none' shows the full 
+      tree; 'lastp' keeps the last P leaves; 'level' shows the last P merging 
+      levels.
+    maxValue: null
+    minValue: null
+    name: dendrogram_truncate_mode
+    options:
+    - none
+    - lastp
+    - level
+    pattern: null
+    type: CATEGORICAL
+  - default: '30'
+    description: Parameter P for truncate_mode 'lastp' or 'level' (ignored when 
+      truncate_mode='none').
+    maxValue: 10000.0
+    minValue: 1.0
+    name: dendrogram_p
+    options: []
+    pattern: null
+    type: INTEGER
+  - default: '0.0'
+    description: Height at which to cut the dendrogram to form clusters (used 
+      only if use_distance_threshold=true). Set to 0.0 to compute the full tree 
+      like in the scikit-learn example.
+    maxValue: null
+    minValue: 0.0
+    name: distance_threshold
+    options: []
+    pattern: null
+    type: FLOAT
+  input:
+  - delimiter: null
+    description: Tabular feature matrix. Rows = samples, columns = numeric 
+      features. If you have an ID column, place it as the first column named id;
+      otherwise sample indices will be used.
+    hasHeader: null
+    indexCol: null
+    maxValue: null
+    minValue: null
+    mode: BOTH
+    name: features
+    required: true
+    shape: null
+    tabularSchema: null
+    type: CSV
+  output:
+  - delimiter: null
+    description: Base64-encoded PNG image of the dendrogram plot.
+    hasHeader: null
+    indexCol: null
+    maxValue: null
+    minValue: null
+    mode: BOTH
+    name: dendrogram_png
+    required: false
+    shape: null
+    tabularSchema: null
+    type: IMAGE
+  - delimiter: null
+    description: Lightweight HTML summary with params, cluster counts, and an 
+      embedded dendrogram image.
+    hasHeader: null
+    indexCol: null
+    maxValue: null
+    minValue: null
+    mode: BOTH
+    name: report
+    required: false
+    shape: null
+    tabularSchema: null
+    type: TEXT
+info:
+  longDescription: null
+  name: AgglomerativeClustering
+  shortDescription: "Hierarchical (Agglomerative) clustering with a\n    publication-ready
+    dendrogram"
+  slug: agglomerativeclustering
+  sourceUrl: 
+    https://gitlab.cosy.bio/cosybio/posymed/apps/agglomerative-clustering
+  type: SELF_LEARNED
