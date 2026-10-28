@@ -23,7 +23,7 @@ config:
     pattern: null
     type: BOOLEAN
   - default: '1'
-    description: Standardize features to zero mean / unit variance before 
+    description: Standardize features to zero mean / unit variance before
       clustering (recommended).
     maxValue: null
     minValue: null
@@ -32,7 +32,7 @@ config:
     pattern: null
     type: BOOLEAN
   - default: euclidean
-    description: Distance metric for clustering (ignored when linkage='ward', 
+    description: Distance metric for clustering (ignored when linkage='ward',
       which always uses euclidean).
     maxValue: null
     minValue: null
@@ -44,7 +44,7 @@ config:
     pattern: null
     type: CATEGORICAL
   - default: '1'
-    description: If true, build the full tree with distance_threshold=0 and 
+    description: If true, build the full tree with distance_threshold=0 and
       n_clusters=None to enable a dendrogram.
     maxValue: null
     minValue: null
@@ -53,7 +53,7 @@ config:
     pattern: null
     type: BOOLEAN
   - default: '2'
-    description: Number of clusters to cut the tree into (used only if 
+    description: Number of clusters to cut the tree into (used only if
       use_distance_threshold=false).
     maxValue: 200.0
     minValue: 2.0
@@ -70,8 +70,8 @@ config:
     pattern: ^.{0,120}$
     type: STRING
   - default: none
-    description: Truncation mode for the dendrogram plot. 'none' shows the full 
-      tree; 'lastp' keeps the last P leaves; 'level' shows the last P merging 
+    description: Truncation mode for the dendrogram plot. 'none' shows the full
+      tree; 'lastp' keeps the last P leaves; 'level' shows the last P merging
       levels.
     maxValue: null
     minValue: null
@@ -83,7 +83,7 @@ config:
     pattern: null
     type: CATEGORICAL
   - default: '30'
-    description: Parameter P for truncate_mode 'lastp' or 'level' (ignored when 
+    description: Parameter P for truncate_mode 'lastp' or 'level' (ignored when
       truncate_mode='none').
     maxValue: 10000.0
     minValue: 1.0
@@ -92,8 +92,8 @@ config:
     pattern: null
     type: INTEGER
   - default: '0.0'
-    description: Height at which to cut the dendrogram to form clusters (used 
-      only if use_distance_threshold=true). Set to 0.0 to compute the full tree 
+    description: Height at which to cut the dendrogram to form clusters (used
+      only if use_distance_threshold=true). Set to 0.0 to compute the full tree
       like in the scikit-learn example.
     maxValue: null
     minValue: 0.0
@@ -103,9 +103,8 @@ config:
     type: FLOAT
   input:
   - delimiter: null
-    description: Tabular feature matrix. Rows = samples, columns = numeric 
-      features. If you have an ID column, place it as the first column named id;
-      otherwise sample indices will be used.
+    description: Numeric feature table. The first four columns are used for clustering;
+      provide features without an identifier column.
     hasHeader: null
     indexCol: null
     maxValue: null
@@ -118,7 +117,7 @@ config:
     type: CSV
   output:
   - delimiter: null
-    description: Base64-encoded PNG image of the dendrogram plot.
+    description: PNG file containing the dendrogram plot.
     hasHeader: null
     indexCol: null
     maxValue: null
@@ -130,8 +129,7 @@ config:
     tabularSchema: null
     type: IMAGE
   - delimiter: null
-    description: Lightweight HTML summary with params, cluster counts, and an 
-      embedded dendrogram image.
+    description: Plain-text summary of the fitted cluster count.
     hasHeader: null
     indexCol: null
     maxValue: null
@@ -144,10 +142,8 @@ config:
     type: TEXT
 info:
   longDescription: null
-  name: AgglomerativeClustering
-  shortDescription: "Hierarchical (Agglomerative) clustering with a\n    publication-ready
-    dendrogram"
-  slug: agglomerativeclustering
-  sourceUrl: 
-    https://gitlab.cosy.bio/cosybio/posymed/apps/agglomerative-clustering
+  name: tool-agglomerative-clustering
+  shortDescription: Runs hierarchical agglomerative clustering and generates a dendrogram image and summary report.
+  slug: tool-agglomerative-clustering
+  sourceUrl: https://github.com/FedLearnNet/tool-agglomerative-clustering
   type: SELF_LEARNED

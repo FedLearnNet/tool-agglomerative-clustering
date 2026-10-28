@@ -57,13 +57,13 @@ class AgglomerativeClusteringAPP(BaseSelfLearnedApp[AgglomerativeClusteringAppCo
                              p=self.config.dendrogram_p)
         plt.xlabel("Number of points in node (or index of point if no parenthesis).")
         plt.savefig("dendrogram.png")
-        for i in range(10):
-            self.send_metric("accuracy", i, i)
-            self.send_metric("loss", i, i)
+        plt.close()
+        self.send_metric("samples", float(X.shape[0]))
+        self.send_metric("clusters", float(model.n_clusters_))
 
         return AgglomerativeClusteringAppOutputConfig(
             dendrogram_png=Path("dendrogram.png"),
-            report=f"Agglomerative Clustering produced {self.config.n_clusters} clusters."
+            report=f"Agglomerative Clustering produced {model.n_clusters_} clusters."
         )
 
     def plot_dendrogram(self, model, **kwargs):

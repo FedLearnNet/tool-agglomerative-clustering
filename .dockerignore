@@ -6,3 +6,9 @@ docker-compose.yml
 Dockerfile
 data/iris.csv
 dendrogram.png
+.env
+.env.*
+__pycache__
+*.py[cod]
+.idea
+.DS_Store
