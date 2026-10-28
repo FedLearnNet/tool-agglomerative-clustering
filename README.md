@@ -1,4 +1,4 @@
-# tool-agglomerative-clustering
+# agglomerative-clustering
 
 Runs hierarchical agglomerative clustering and generates a dendrogram image and summary report.
 

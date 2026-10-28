@@ -142,8 +142,8 @@ config:
     type: TEXT
 info:
   longDescription: null
-  name: tool-agglomerative-clustering
+  name: agglomerative-clustering
   shortDescription: Runs hierarchical agglomerative clustering and generates a dendrogram image and summary report.
-  slug: tool-agglomerative-clustering
+  slug: agglomerative-clustering
   sourceUrl: https://github.com/FedLearnNet/tool-agglomerative-clustering
   type: SELF_LEARNED
